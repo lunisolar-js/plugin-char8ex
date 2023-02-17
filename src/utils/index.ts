@@ -2,7 +2,7 @@ import type { Stem } from 'lunisolar'
 
 import { TenGod } from '../class/tenGod'
 
-import { getTranslation } from '../../../utils'
+import { getTranslation } from '@lunisolar/utils'
 import { TEN_GOD_RELATIONS as TGR } from '../constants'
 
 export const char8exGlobal: { locales: { [key: string]: any } } = {
