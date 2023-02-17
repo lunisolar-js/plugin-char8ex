@@ -1,16 +1,12 @@
-import { cache } from '@lunisolar/utils'
+import { cache, computeRatStem } from '@lunisolar/utils'
 import type { Stem, Char8, Lunisolar, SB } from 'lunisolar'
 import { Pillar } from './pillar'
-import { computeRatStem } from '../../../utils'
 import { trans } from '../utils'
-import { SBX } from '../types'
 import { C8God } from './c8God'
 import { createAllC8Gods } from '../utils/c8Gods'
 import { branchValue2month, month2BranchValue } from '../utils'
 
 import { getLsFactory } from '../pluginGlobel'
-
-const SBClass = getLsFactory().SB
 
 export class Char8Ex {
   readonly _lang: string = 'zh'
@@ -36,7 +32,7 @@ export class Char8Ex {
     const ymdhList = ['year', 'month', 'day', 'hour']
     const createPillar = (ymdh: YMDH) => {
       return new Pillar({
-        sb: this.char8[ymdh] as unknown as SBX,
+        sb: this.char8[ymdh],
         me: this.me,
         cate: ymdh,
         lang: lsr.char8.getConfig().lang
@@ -74,7 +70,7 @@ export class Char8Ex {
   embryo(): SB {
     const s = (this.month.stem.value + 1) % 10
     const b = (this.month.branch.value + 3) % 12
-    return new SBClass(s, b, { lang: this.char8.getConfig().lang })
+    return new (getLsFactory().SB)(s, b, { lang: this.char8.getConfig().lang })
   }
 
   /**
@@ -102,7 +98,7 @@ export class Char8Ex {
     const b = month2BranchValue(newMonth > 14 ? 26 - newMonth : 14 - newMonth)
     // 命宫天干按五虎遁（五虎遁和五鼠遁本质是一样的）
     const s = computeRatStem(this.year.stem.value, b) % 10
-    return new SBClass(s, b, { lang: this.char8.getConfig().lang })
+    return new (getLsFactory().SB)(s, b, { lang: this.char8.getConfig().lang })
   }
 
   /**
@@ -125,7 +121,7 @@ export class Char8Ex {
     const b = month2BranchValue((month + c8hour) % 12)
     // 查身宫天干
     const s = computeRatStem(this.year.stem.value, b) % 10
-    return new SBClass(s, b, { lang: this.char8.getConfig().lang })
+    return new (getLsFactory().SB)(s, b, { lang: this.char8.getConfig().lang })
   }
 
   toString() {

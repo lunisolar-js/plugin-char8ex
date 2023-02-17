@@ -1,22 +1,21 @@
-import type { Stem, Branch, Element5 } from 'lunisolar'
+import type { Stem, Branch, Element5, SB } from 'lunisolar'
 import { TenGod } from './tenGod'
 import { C8God } from './c8God'
 import { computeTenGodByStem } from '../utils'
 
-import { SBX } from '../types'
 import { cache } from '@lunisolar/utils'
 
 interface PillarDataParam {
-  sb: SBX
-  cate: YMDH
+  sb: SB
+  cate: YMDH | 'BigMoves'
   me: Stem
   lang?: string
 }
 
 export class Pillar {
-  readonly _sb: SBX
+  readonly _sb: SB
   readonly _me: Stem
-  readonly _cate: YMDH
+  readonly _cate: YMDH | 'BigMoves'
   readonly _lang: string = 'zh'
   readonly gods: C8God[] = []
   readonly cache = new Map<string, unknown>()

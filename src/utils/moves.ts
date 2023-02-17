@@ -1,9 +1,6 @@
 import type { Char8Ex } from '../class/char8ex'
-import type { SBX } from '../types'
 import { Pillar } from '../class/pillar'
 import { getLsFactory } from '../pluginGlobel'
-
-const SB = getLsFactory().SB
 
 export const computeBigMoves = (c8ex: Char8Ex, length = 8) => {
   const sex = c8ex.sexValue
@@ -18,8 +15,8 @@ export const computeBigMoves = (c8ex: Char8Ex, length = 8) => {
   // 计算大运天干地支
   for (let i = 0; i < length; i++) {
     let sbValue = isRev ? (60 - (startSBValue + i + 1)) % 60 : (startSBValue + i + 1) % 60
-    const sb = new SB(sbValue, undefined, config)
-    const pillar = new Pillar({ sb: sb as SBX, cate: 'BigMoves', me: c8ex.me, lang: c8ex._lang })
+    const sb = new (getLsFactory().SB)(sbValue, undefined, config)
+    const pillar = new Pillar({ sb: sb, cate: 'BigMoves', me: c8ex.me, lang: c8ex._lang })
     movesList[i] = pillar
   }
 }
