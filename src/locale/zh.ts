@@ -1,7 +1,6 @@
-import { defineLocale } from '../../../utils'
-export default defineLocale({
+export default {
   name: 'zh',
   char8ex: {
     sex: ['坤造', '乾造']
   }
-})
+}

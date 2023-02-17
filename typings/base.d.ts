@@ -1,4 +1,5 @@
-interface ClassCommonConfig extends pick<lunisolar.ConfigType, 'lang'> {
+interface ClassCommonConfig {
+  lang: string
   [props: string]: any
 }
 
