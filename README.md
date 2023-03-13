@@ -33,16 +33,16 @@ lunisolar().char8ex(sex: 0 | 1): Char8Ex
 安装：
 
 ```sh
-npm install @lunisolar/plugin-char8ex
+# 由于八字增强插件虽要用到五行纳音，所以同时安装五行纳音插件
+npm install @lunisolar/plugin-char8ex @lunisolar/plugin-takesound
 ```
-
 
 ```typescript
 // 引入lunisolar
 import lunisolar from 'lunisolar'
 // 引入 theGods 插件
 import { char8ex } from '@lunisolar/plugin-char8ex'
-// 加载插件
+// 加载插件 （加载char8ex时，takesound插件也会自动加载）
 lunisolar.extend(char8ex)
 
 
