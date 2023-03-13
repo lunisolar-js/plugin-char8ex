@@ -168,5 +168,5 @@ declare module 'lunisolar' {
   }
 }
 
-declare const cache8ex: PluginFunc
-export { cache8ex }
+declare const char8ex: PluginFunc
+export { char8ex }
